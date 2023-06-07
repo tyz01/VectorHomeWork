@@ -42,7 +42,7 @@ public class VectorProgram {
 
     public static void processExamResults(int[] marks) {
         int totalMarks = marks.length;
-        int[] count = new int[6]; // Индекс 0 - количество оценок "ноль", индекс 1 - количество оценок "единица" и т.д.
+        int[] count = new int[6];
 
         for (int mark : marks) {
             count[mark]++;
