@@ -1,6 +1,6 @@
 package logic;
 
-public class VectorProgram {
+public class VetorLogic {
 
     public static boolean isSorted(int[] vector) {
         for (int i = 0; i < vector.length - 1; i++) {
@@ -40,7 +40,7 @@ public class VectorProgram {
         return count;
     }
 
-    public static void processExamResults(int[] marks) {
+    public static int[] processExamResults(int[] marks) {
         int totalMarks = marks.length;
         int[] count = new int[6];
 
@@ -48,10 +48,11 @@ public class VectorProgram {
             count[mark]++;
         }
 
-        System.out.println("Exam Result:");
-        for (int i = 5; i >= 0; i--) {
-            double percentage = (count[i] * 100.0) / totalMarks;
-            System.out.printf("%d%s - %.1f%% (%d)%n", i, (i == 1 ? "s" : ""), percentage, count[i]);
+        int[] result = new int[6];
+        for (int i = 0; i < 6; i++) {
+            result[i] = count[i];
         }
+
+        return result;
     }
 }
