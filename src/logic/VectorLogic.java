@@ -1,6 +1,6 @@
 package logic;
 
-public class VetorLogic {
+public class VectorLogic {
 
     public static boolean isSorted(int[] vector) {
         for (int i = 0; i < vector.length - 1; i++) {
@@ -48,11 +48,12 @@ public class VetorLogic {
             count[mark]++;
         }
 
-        int[] result = new int[6];
-        for (int i = 0; i < 6; i++) {
-            result[i] = count[i];
-        }
+        return copyArray(count);
+    }
 
+    private static int[] copyArray(int[] count) {
+        int[] result = new int[6];
+        System.arraycopy(count, 0, result, 0, 6);
         return result;
     }
 }

@@ -1,25 +1,27 @@
 package controller;
 
-import static logic.VetorLogic.*;
+import model.Exam;
+import model.Vector;
+
+import static logic.ExamLogic.displayExamResults;
+import static logic.ExamLogic.processExamResults;
+import static logic.VectorLogic.*;
 
 public class Main {
     public static void main(String[] args) {
-        int[] vector = {1, 2, 3, 2, 1};
+        int[] arrayVector = {1, 2, 3, 2, 1};
+        Vector vector = new Vector(arrayVector);
+        boolean isSorted = isSorted(vector.getElementVector());
+        boolean isMirrored = isMirrored(vector.getElementVector());
+        boolean areAllElementsSame = areAllElementsSame(vector.getElementVector());
+        int evenCount = countEvenOddElements(vector.getElementVector(), true);
+        int oddCount = countEvenOddElements(vector.getElementVector(), false);
 
-        boolean isSorted = isSorted(vector);
-        boolean isMirrored = isMirrored(vector);
-        boolean areAllElementsSame = areAllElementsSame(vector);
-        int evenCount = countEvenOddElements(vector, true);
-        int oddCount = countEvenOddElements(vector, false);
+        int[] marks = {5, 4, 5, 5, 5, 2, 5};
+        Exam exam = new Exam(marks);
+        int[] examResults = processExamResults(exam.getMarks());
+        displayExamResults(examResults);
 
-        int[] marks = {1, 2, 3, 4, 5, 5, 4, 3, 2, 1};
-        int[] examResults = processExamResults(marks);
-
-        System.out.println("Exam Result:");
-        for (int i = 5; i >= 0; i--) {
-            double percentage = (examResults[i] * 100.0) / marks.length;
-            System.out.printf("%d%s - %.1f%% (%d)%n", i, (i == 1 ? "s" : ""), percentage, examResults[i]);
-        }
         System.out.println("Is the vector sorted? " + isSorted);
         System.out.println("Is the vector mirrored? " + isMirrored);
         System.out.println("Are all elements in the vector the same? " + areAllElementsSame);
