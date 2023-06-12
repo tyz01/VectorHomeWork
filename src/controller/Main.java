@@ -17,7 +17,7 @@ public class Main {
         int evenCount = countEvenOddElements(vector.getElementVector(), true);
         int oddCount = countEvenOddElements(vector.getElementVector(), false);
 
-        int[] marks = {5, 4, 5, 5, 5, 2, 5};
+        int[] marks = {1, 2, 3, 4, 5};
         Exam exam = new Exam(marks);
         int[] examResults = processExamResults(exam.getMarks());
         displayExamResults(examResults);

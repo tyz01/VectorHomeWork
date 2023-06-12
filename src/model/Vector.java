@@ -6,6 +6,9 @@ public class Vector {
     private int [] elementVector;
 
     public Vector(int[] elementVector) {
+        if(elementVector.length == 0){
+            System.out.println("elementVector is empty");
+        }
         this.elementVector = elementVector;
     }
 

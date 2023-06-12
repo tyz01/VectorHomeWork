@@ -2,35 +2,43 @@ package logic;
 
 import org.junit.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 import static org.junit.Assert.*;
 
 public class ExamLogicTest {
 
     @Test
-    public void testDisplayExamResults() {
-        int[] examResults = {0, 1, 7, 0, 10, 12};
+    public void testDisplayExamResults() { //don't work
+        int[] examResults = {1, 2, 3, 4, 5};
+
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        PrintStream printStream = new PrintStream(outputStream);
+        System.setOut(printStream);
 
         ExamLogic.displayExamResults(examResults);
 
         String expectedOutput = """
                 Exam Result:
-                5 - 40.0% (12)
-                4 - 33.3% (10)
-                3 - 23.3% (7)
-                2 - 0.0% (0)
-                1 - 0.0% (0)
+                5 - 16,7% (1)
+                4 - 16,7% (1)
+                3 - 16,7% (1)
+                2 - 16,7% (1)
+                1 - 16,7% (1)
                 """;
-        System.out.println(expectedOutput);
-      //  String actualOutput = outputStream.toString();
 
-       // assertEquals(expectedOutput, actualOutput);
+        String actualOutput = outputStream.toString();
+
+        assertEquals(expectedOutput, actualOutput);
     }
+
     @Test
     public void testProcessExamResults_PositiveOutcome() {
         int[] marks = {1, 2, 3, 4, 5, 5, 4, 3, 2, 1};
         int[] expectedResults = {0, 2, 2, 2, 2, 2};
 
-        int[] actualResults = VectorLogic.processExamResults(marks);
+        int[] actualResults = ExamLogic.processExamResults(marks);
 
         assertArrayEquals(expectedResults, actualResults);
     }
@@ -40,7 +48,7 @@ public class ExamLogicTest {
         int[] marks = {};
         int[] expectedResults = {0, 0, 0, 0, 0, 0};
 
-        int[] actualResults = VectorLogic.processExamResults(marks);
+        int[] actualResults = ExamLogic.processExamResults(marks);
 
         assertArrayEquals(expectedResults, actualResults);
     }

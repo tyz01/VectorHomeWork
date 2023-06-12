@@ -39,21 +39,4 @@ public class VectorLogic {
         }
         return count;
     }
-
-    public static int[] processExamResults(int[] marks) {
-        int totalMarks = marks.length;
-        int[] count = new int[6];
-
-        for (int mark : marks) {
-            count[mark]++;
-        }
-
-        return copyArray(count);
-    }
-
-    private static int[] copyArray(int[] count) {
-        int[] result = new int[6];
-        System.arraycopy(count, 0, result, 0, 6);
-        return result;
-    }
 }
